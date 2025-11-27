@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karine | Portfolio</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background:#f0ecff;color:#222;line-height:1.6;scroll-behavior:smooth}
+header{background:#5e2bff;color:white;padding:25px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.2)}
+header h1{font-size:30px;font-weight:800;letter-spacing:1px}
+nav{margin-top:12px}
+nav a{color:white;margin:0 14px;font-weight:bold;text-decoration:none;font-size:15px}
+nav a:hover{color:#ffe55c;text-decoration:underline}
+marquee{margin-top:12px;color:#ffeaff;font-weight:bold;font-size:14px}
+.container{width:90%;max-width:900px;margin:auto;padding:35px 0}
+.fade-in{animation:fadeIn 1.5s forwards;opacity:0}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.scale-in{animation:scaleIn .9s forwards;opacity:0}
+@keyframes scaleIn{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
+.profile-photo{width:170px;height:170px;border-radius:50%;object-fit:cover;cursor:pointer;border:5px solid #5e2bff;display:block;margin:auto;transition:.3s}
+.profile-photo:hover{transform:scale(1.05)}
+h2{color:#5e2bff;text-align:center;margin:25px 0 15px;font-size:26px}
+.projects,.skills{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{background:white;padding:18px;border-radius:14px;box-shadow:0 4px 15px rgba(0,0,0,0.15);font-weight:600;text-align:center;transition:.3s}
+.card:hover{transform:translateY(-6px);box-shadow:0 8px 25px rgba(0,0,0,0.22)}
+#about p{background:white;padding:22px;border-radius:14px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
+form{display:flex;flex-direction:column;gap:14px;margin-top:20px}
+form input,form textarea{padding:13px;border-radius:10px;border:1px solid #bbb;font-size:15px}
+form button{padding:14px;background:#5e2bff;color:white;border:none;border-radius:10px;font-size:17px;font-weight:bold;cursor:pointer;transition:.3s}
+form button:hover{background:#7c4dff}
+footer{text-align:center;padding:20px;background:#5e2bff;color:white;margin-top:30px;font-size:14px}
+.modal,.confirm-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);display:none;justify-content:center;align-items:center;padding:20px}
+.modal-content,.confirm-content{background:white;padding:25px;border-radius:14px;width:90%;max-width:400px;text-align:center;animation:scaleIn .6s}
+.modal-content h2{color:#5e2bff;margin-bottom:10px}
+.confirm-content button,.modal-content button{width:46%;margin:10px 5px;padding:11px;background:#5e2bff;color:white;border:none;border-radius:8px;font-size:15px;cursor:pointer}
+.confirm-content button:hover,.modal-content button:hover{background:#7c4dff}
+.second-photo{width:180px;height:180px;border-radius:14px;object-fit:cover;margin-bottom:12px;border:4px solid #5e2bff}
+@media(max-width:600px){
+.projects,.skills{grid-template-columns:1fr}
+.profile-photo{width:145px;height:145px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="fade-in">
+<h1>Karine’s Portfolio</h1>
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+<marquee>Welcome to my portfolio! Explore my projects and skills.</marquee>
+</nav>
+</header>
+
+<section id="home" class="container fade-in">
+<img src="k1.jpeg" class="profile-photo scale-in" onclick="showProfileModal()">
+
+<h2>Projects</h2>
+<div class="projects fade-in">
+<div class="card"><h3>Project One</h3><p>I have done frontend developing in my past class (Art277).</p></div>
+<div class="card"><h3>Project Two</h3><p>I have done content writing and blogging for contents I created.</p></div>
+</div>
+
+<h2>Skills</h2>
+<div class="skills fade-in">
+<div class="card">Networking</div>
+<div class="card">Coding</div>
+<div class="card">Business Oriented</div>
+</div>
+</section>
+
+<section id="about" class="container fade-in">
+<h2>About Me</h2>
+<p>
+I’m <b>Karine Mentee</b>. I’m a student of Starz University studying IT (BIT) with emphasis in System Administration. I learn faster through visual demonstrations.<br><br>
+I’m skilled in HTML, CSS, writing, and basic computer operations. I work as a Research Assistant, gathering information, analyzing data, and writing reports. I also have experience as a bureau teller.<br><br>
+I love content creation, blogging, and writing. In a few years, I want to be financially stable, running my own business, working a good-paying job, and becoming a well-known figure in society.<br><br>
+<strong>Hobbies:</strong> Writing code, reading, movies, traveling, poetry, storytelling, and listening to music (my therapy).
+</p>
+</section>
+
+<section id="contact" class="container fade-in">
+<h2>Contact Me</h2>
+<form onsubmit="event.preventDefault(); showConfirmModal()">
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<textarea rows="4" placeholder="Your Message" required></textarea>
+<button type="submit">Send</button>
+</form>
+</section>
+
+<footer>
+© 2025 Karine | All rights reserved.
+</footer>
+
+<div class="modal" id="profileModal">
+<div class="modal-content">
+<img src="k1.jpeg" class="second-photo">
+<h2>Karine Mentee</h2>
+<p>A dedicated IT student, content creator, writer, and researcher.</p>
+<button onclick="showSecondPhoto()">More Photos</button>
+<button onclick="closeProfileModal()">Close</button>
+</div>
+</div>
+
+<div class="modal" id="secondPhotoModal">
+<div class="modal-content">
+<img src="k1.jpeg" class="second-photo">
+<h2>Second Profile Photo</h2>
+<p>This is an additional view of me.</p>
+<button onclick="closeSecondPhoto()">Close</button>
+</div>
+</div>
+
+<div class="confirm-modal" id="confirmModal">
+<div class="confirm-content">
+<p>Are you sure you want to submit this form?</p>
+<button onclick="submitForm()">Yes</button>
+<button onclick="closeConfirmModal()">No</button>
+</div>
+</div>
+
+<script>
+function showProfileModal(){document.getElementById('profileModal').style.display='flex'}
+function closeProfileModal(){document.getElementById('profileModal').style.display='none'}
+function showSecondPhoto(){document.getElementById('secondPhotoModal').style.display='flex'}
+function closeSecondPhoto(){document.getElementById('secondPhotoModal').style.display='none'}
+function showConfirmModal(){document.getElementById('confirmModal').style.display='flex'}
+function closeConfirmModal(){document.getElementById('confirmModal').style.display='none'}
+function submitForm(){closeConfirmModal();alert('Form submitted successfully!')}
+</script>
+
+</body>
+</html>
